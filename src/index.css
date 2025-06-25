@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -135,6 +137,8 @@
 .animate-slide-in-left {
   animation: slide-in-left 0.8s ease-out;
 }
+
+/* ... keep existing code (responsive text sizing, utilities, and other CSS rules) */
 
 /* Responsive text sizing */
 @layer utilities {

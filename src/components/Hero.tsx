@@ -12,7 +12,7 @@ export const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 relative overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"%3E%3Cdefs%3E%3CradialGradient id="a" cx="50%25" cy="50%25"%3E%3Cstop offset="0%25" stop-color="%2360ace4" stop-opacity="0.1"/%3E%3Cstop offset="100%25" stop-color="%2360ace4" stop-opacity="0"/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx="200" cy="200" r="180" fill="url(%23a)"/%3E%3Ccircle cx="800" cy="800" r="200" fill="url(%23a)"/%3E%3Ccircle cx="300" cy="700" r="150" fill="url(%23a)"/%3E%3C/svg%3E')] opacity-60"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 1000\"%3E%3Cdefs%3E%3CradialGradient id=\"a\" cx=\"50%25\" cy=\"50%25\"%3E%3Cstop offset=\"0%25\" stop-color=\"%2360ace4\" stop-opacity=\"0.1\"/%3E%3Cstop offset=\"100%25\" stop-color=\"%2360ace4\" stop-opacity=\"0\"/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx=\"200\" cy=\"200\" r=\"180\" fill=\"url(%23a)\"/%3E%3Ccircle cx=\"800\" cy=\"800\" r=\"200\" fill=\"url(%23a)\"/%3E%3Ccircle cx=\"300\" cy=\"700\" r=\"150\" fill=\"url(%23a)\"/%3E%3C/svg%3E')] opacity-60"></div>
       
       <div className="container mx-auto px-4 text-center relative z-10 animate-fade-in">
         <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-8 border border-white/20 shadow-sm">
