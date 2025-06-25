@@ -78,36 +78,36 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <section id="contact" className="py-8 sm:py-12 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-green-50">
       <div className="container mx-auto px-4">
         <Card className="max-w-6xl mx-auto bg-gradient-to-br from-white to-blue-50 shadow-2xl border-0 overflow-hidden">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="flex flex-col lg:grid lg:grid-cols-2">
             {/* Contact Info */}
-            <div className="p-8 lg:p-12">
-              <div className="inline-block bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="p-6 sm:p-8 lg:p-12 order-2 lg:order-1">
+              <div className="inline-block bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 sm:mb-6">
                 Get In Touch
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
                 Ready to Start Your 
                 <span className="block bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
                   Journey?
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                 Contact us today to learn more about overseas opportunities and take the first step towards your career abroad.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((item, index) => {
                   const Icon = item.icon;
                   const content = (
-                    <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-blue-500">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center shadow-lg`}>
-                        <Icon className="w-6 h-6 text-white" />
+                    <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-blue-500">
+                      <div className={`w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center shadow-lg flex-shrink-0`}>
+                        <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      <div>
-                        <div className="font-semibold text-gray-800 mb-1">{item.title}</div>
-                        <div className="text-gray-600">{item.info}</div>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">{item.title}</div>
+                        <div className="text-gray-600 text-sm sm:text-base break-all sm:break-normal">{item.info}</div>
                       </div>
                     </div>
                   );
@@ -124,7 +124,7 @@ export const Contact = () => {
                 })}
               </div>
 
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 <div className="inline-block bg-gradient-to-r from-green-100 to-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
                   🌏 We speak Tagalog & English!
                 </div>
@@ -132,14 +132,14 @@ export const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 lg:p-12 border-l lg:border-l-gray-100">
-              <h3 className="text-2xl lg:text-3xl font-bold mb-2 text-gray-800">
+            <div className="bg-white p-6 sm:p-8 lg:p-12 border-t lg:border-t-0 lg:border-l lg:border-l-gray-100 order-1 lg:order-2">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 text-gray-800">
                 💬 Send us a Message
               </h3>
-              <p className="text-gray-600 mb-8">We'll get back to you within 24 hours</p>
+              <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">We'll get back to you within 24 hours</p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
                       First Name
@@ -151,7 +151,7 @@ export const Contact = () => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       placeholder="John"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white text-sm sm:text-base"
                       required
                     />
                   </div>
@@ -166,7 +166,7 @@ export const Contact = () => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       placeholder="Doe"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white text-sm sm:text-base"
                       required
                     />
                   </div>
@@ -183,7 +183,7 @@ export const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white text-sm sm:text-base"
                     required
                   />
                 </div>
@@ -198,15 +198,15 @@ export const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Tell us about your interests and experience..."
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white resize-vertical"
+                    rows={4}
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white resize-vertical text-sm sm:text-base"
                     required
                   />
                 </div>
 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   📋 Send Message
                 </Button>
