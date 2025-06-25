@@ -12,7 +12,11 @@ export const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-green-50 relative overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 1000\"><defs><radialGradient id=\"a\" cx=\"50%\" cy=\"50%\"><stop offset=\"0%\" stop-color=\"%2360ace4\" stop-opacity=\"0.1\"/><stop offset=\"100%\" stop-color=\"%2360ace4\" stop-opacity=\"0\"/></radialGradient></defs><circle cx=\"200\" cy=\"200\" r=\"180\" fill=\"url(%23a)\"/><circle cx=\"800\" cy=\"800\" r=\"200\" fill=\"url(%23a)\"/><circle cx=\"300\" cy=\"700\" r=\"150\" fill=\"url(%23a)\"/></svg>')] opacity-60"></div>
+      <div className="absolute inset-0 opacity-60">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300 rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-green-300 rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute bottom-32 left-32 w-60 h-60 bg-blue-200 rounded-full opacity-15 blur-3xl"></div>
+      </div>
       
       <div className="container mx-auto px-4 text-center relative z-10 animate-fade-in">
         <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-8 border border-white/20 shadow-sm">
