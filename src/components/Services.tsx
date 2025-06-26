@@ -91,6 +91,34 @@ const services = [
   }
 ];
 
+const officeImages = [
+  {
+    src: '/lovable-uploads/f9f1f64d-e764-48bf-afe5-29459bd36094.png',
+    alt: 'Office reception and waiting area',
+    title: 'Our Reception Area'
+  },
+  {
+    src: '/lovable-uploads/4d9843c8-5c72-4dc0-9c25-0708960980ca.png',
+    alt: 'Client waiting room with blue chairs',
+    title: 'Client Waiting Room'
+  },
+  {
+    src: '/lovable-uploads/469d2d2d-2278-4eea-936b-72432de25410.png',
+    alt: 'Team meeting in conference room',
+    title: 'Our Professional Team'
+  },
+  {
+    src: '/lovable-uploads/554db811-1d5c-4dc9-9d25-a2a5f9b2a842.png',
+    alt: 'Team working in office cubicles',
+    title: 'Our Dedicated Staff'
+  },
+  {
+    src: '/lovable-uploads/4e47e086-8f44-4cff-b4e5-e83082136c22.png',
+    alt: 'Office workspace and operations',
+    title: 'Our Operations Center'
+  }
+];
+
 export const Services = () => {
   const handleScrollToContact = () => {
     const element = document.querySelector('#contact');
@@ -182,7 +210,7 @@ export const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {services.map((service, index) => (
             <Card key={index} className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg">
               <div className="text-center mb-6">
@@ -198,6 +226,59 @@ export const Services = () => {
               </p>
             </Card>
           ))}
+        </div>
+
+        {/* Our Office & Team Section */}
+        <div className="text-center mb-16">
+          <div className="inline-block bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            Our Workplace
+          </div>
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
+            Our Office &
+            <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+              Team
+            </span>
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+            Take a look at our professional workspace and dedicated team committed to serving you
+          </p>
+        </div>
+
+        <div className="relative px-12">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {officeImages.map((image, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-3 group bg-white border-0 shadow-lg h-full">
+                    <div className="relative overflow-hidden">
+                      <img 
+                        src={image.src} 
+                        alt={image.alt}
+                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                        {image.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {image.alt}
+                      </p>
+                    </div>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </section>
