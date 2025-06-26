@@ -212,7 +212,9 @@ export const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {services.map((service, index) => (
-            <Card key={index} className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg">
+            <Card key={index} className={`p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg ${
+              index >= 3 ? 'md:col-span-1 lg:col-span-1' : ''
+            } ${index === 3 ? 'lg:col-start-1' : ''} ${index === 4 ? 'lg:col-start-3' : ''}`}>
               <div className="text-center mb-6">
                 <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg`}>
                   <span className="text-white text-2xl">{service.icon}</span>
@@ -256,11 +258,11 @@ export const Services = () => {
               {officeImages.map((image, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-3 group bg-white border-0 shadow-lg h-full">
-                    <div className="relative overflow-hidden h-64">
+                    <div className="relative overflow-hidden aspect-[4/3]">
                       <img 
                         src={image.src} 
                         alt={image.alt}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
