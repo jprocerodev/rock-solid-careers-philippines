@@ -80,6 +80,22 @@ export const Contact = () => {
   return (
     <section id="contact" className="py-8 sm:py-12 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-green-50">
       <div className="container mx-auto px-4">
+        {/* Contact Us Header */}
+        <div className="text-center mb-16">
+          <div className="inline-block bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            Get In Touch
+          </div>
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
+            Contact 
+            <span className="bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
+              Us
+            </span>
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+            Ready to start your journey? Get in touch with us today to learn more about overseas opportunities.
+          </p>
+        </div>
+
         <Card className="max-w-6xl mx-auto bg-gradient-to-br from-white to-blue-50 shadow-2xl border-0 overflow-hidden">
           <div className="flex flex-col lg:grid lg:grid-cols-2">
             {/* Contact Info */}
@@ -87,12 +103,12 @@ export const Contact = () => {
               <div className="inline-block bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 sm:mb-6">
                 Get In Touch
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
                 Ready to Start Your 
                 <span className="block bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
                   Journey?
                 </span>
-              </h2>
+              </h3>
               <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                 Contact us today to learn more about overseas opportunities and take the first step towards your career abroad.
               </p>
