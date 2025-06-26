@@ -19,9 +19,12 @@ export const Footer = () => {
             <div className="flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent mb-4">
               🏢 Rock Solid Manpower
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-4 leading-relaxed">
               Your trusted partner for overseas employment opportunities with over 30 years of experience.
             </p>
+            <div className="text-xs text-gray-400 mb-6">
+              License No. DMW-154-LB-08082023-R
+            </div>
             <div className="flex gap-4">
               {['📘', '📧', '📞'].map((emoji, index) => (
                 <a
@@ -58,15 +61,16 @@ export const Footer = () => {
           
           <div>
             <h4 className="text-xl font-bold mb-6 text-white">Contact Info</h4>
-            <div className="space-y-3 text-gray-300">
-              <p className="flex items-center gap-2">
-                🏢 123 Business St., Makati City
+            <div className="space-y-3 text-gray-300 text-sm">
+              <p className="flex items-start gap-2">
+                <span className="text-base">🏢</span>
+                <span>2nd Floor Lifestyle building, 1928 Leon guinto street<br />Brgy 692 Malate Manila</span>
               </p>
               <p className="flex items-center gap-2">
                 🇵🇭 Philippines
               </p>
               <p className="flex items-center gap-2 text-blue-400">
-                📞 Phone: +63 (02) 123-4567
+                📞 Phone: (02) 84-2061-59
               </p>
               <p className="flex items-center gap-2 text-green-400">
                 📧 Email: info@rocksolidmanpower.com

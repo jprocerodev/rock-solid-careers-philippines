@@ -57,8 +57,8 @@ export const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      info: '+63 02 123 4567',
-      href: 'tel:+63021234567',
+      info: '(02) 84-2061-59',
+      href: 'tel:02842061459',
       color: 'from-red-500 to-red-400'
     },
     {
@@ -71,7 +71,7 @@ export const Contact = () => {
     {
       icon: MapPin,
       title: 'Address',
-      info: '123 Business St., Makati City, Philippines',
+      info: '2nd Floor Lifestyle building, 1928 Leon guinto street, Brgy 692 Malate Manila',
       href: null,
       color: 'from-blue-500 to-blue-400'
     }
@@ -101,13 +101,13 @@ export const Contact = () => {
                 {contactInfo.map((item, index) => {
                   const Icon = item.icon;
                   const content = (
-                    <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-blue-500">
-                      <div className={`w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center shadow-lg flex-shrink-0`}>
+                    <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-blue-500">
+                      <div className={`w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center shadow-lg flex-shrink-0 mt-1`}>
                         <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">{item.title}</div>
-                        <div className="text-gray-600 text-sm sm:text-base break-all sm:break-normal">{item.info}</div>
+                        <div className="text-gray-600 text-sm sm:text-base leading-relaxed">{item.info}</div>
                       </div>
                     </div>
                   );
@@ -124,9 +124,12 @@ export const Contact = () => {
                 })}
               </div>
 
-              <div className="mt-6 sm:mt-8">
+              <div className="mt-6 sm:mt-8 space-y-3">
                 <div className="inline-block bg-gradient-to-r from-green-100 to-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
                   🌏 We speak Tagalog & English!
+                </div>
+                <div className="bg-gradient-to-r from-blue-100 to-green-100 text-blue-700 px-4 py-2 rounded-full text-xs font-semibold inline-block ml-2">
+                  📜 License No. DMW-154-LB-08082023-R
                 </div>
               </div>
             </div>
