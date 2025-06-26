@@ -136,7 +136,7 @@ export const Services = () => {
             Our Services
           </div>
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
-            Countries We 
+            Countries We{' '}
             <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
               Serve
             </span>
@@ -200,7 +200,7 @@ export const Services = () => {
         {/* Detailed Services Section */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
-            Our Complete 
+            Our Complete{' '}
             <span className="bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
               Services
             </span>
@@ -236,7 +236,7 @@ export const Services = () => {
             Our Workplace
           </div>
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
-            Our Office &
+            Our Office &{' '}
             <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
               Team
             </span>
@@ -258,11 +258,11 @@ export const Services = () => {
               {officeImages.map((image, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-3 group bg-white border-0 shadow-lg h-full">
-                    <div className="relative overflow-hidden aspect-[4/3]">
+                    <div className="relative overflow-hidden h-80">
                       <img 
                         src={image.src} 
                         alt={image.alt}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-contain bg-gray-50 group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
