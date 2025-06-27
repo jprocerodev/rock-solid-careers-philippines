@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Phone, Mail, MapPin, Upload, X } from 'lucide-react';
+import { useContactForm } from '@/hooks/useContactForm';
 import { useToast } from '@/hooks/use-toast';
 
 export const Contact = () => {
@@ -13,6 +13,7 @@ export const Contact = () => {
     message: ''
   });
   const [cvFile, setCvFile] = useState<File | null>(null);
+  const { isSubmitting, submitContactForm } = useContactForm();
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -75,26 +76,20 @@ export const Contact = () => {
       return;
     }
 
-    // Simulate sending email (in a real app, you'd send this to your backend)
-    console.log('Sending email to grayzxc23@gmail.com with data:', {
-      ...formData,
-      cvFile: cvFile ? cvFile.name : 'No CV uploaded'
-    });
-
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message! We will get back to you within 24 hours."
-    });
-
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      message: ''
-    });
-    setCvFile(null);
-    const fileInput = document.getElementById('cvUpload') as HTMLInputElement;
-    if (fileInput) fileInput.value = '';
+    const success = await submitContactForm(formData, cvFile);
+    
+    if (success) {
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: ''
+      });
+      setCvFile(null);
+      const fileInput = document.getElementById('cvUpload') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
+    }
   };
 
   const contactInfo = [
@@ -304,9 +299,10 @@ export const Contact = () => {
 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  📋 Send Message
+                  {isSubmitting ? 'Sending...' : '📋 Send Message'}
                 </Button>
               </form>
             </div>
