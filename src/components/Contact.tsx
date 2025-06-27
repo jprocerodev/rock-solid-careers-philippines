@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Upload, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export const Contact = () => {
@@ -12,6 +12,7 @@ export const Contact = () => {
     email: '',
     message: ''
   });
+  const [cvFile, setCvFile] = useState<File | null>(null);
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -19,7 +20,41 @@ export const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Check file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        toast({
+          title: "File too large",
+          description: "Please select a file smaller than 5MB.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      // Check file type
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!allowedTypes.includes(file.type)) {
+        toast({
+          title: "Invalid file type",
+          description: "Please upload a PDF or Word document.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      setCvFile(file);
+    }
+  };
+
+  const removeFile = () => {
+    setCvFile(null);
+    const fileInput = document.getElementById('cvUpload') as HTMLInputElement;
+    if (fileInput) fileInput.value = '';
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
@@ -40,6 +75,12 @@ export const Contact = () => {
       return;
     }
 
+    // Simulate sending email (in a real app, you'd send this to your backend)
+    console.log('Sending email to grayzxc23@gmail.com with data:', {
+      ...formData,
+      cvFile: cvFile ? cvFile.name : 'No CV uploaded'
+    });
+
     toast({
       title: "Message Sent!",
       description: "Thank you for your message! We will get back to you within 24 hours."
@@ -51,6 +92,9 @@ export const Contact = () => {
       email: '',
       message: ''
     });
+    setCvFile(null);
+    const fileInput = document.getElementById('cvUpload') as HTMLInputElement;
+    if (fileInput) fileInput.value = '';
   };
 
   const contactInfo = [
@@ -64,8 +108,8 @@ export const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      info: 'info@rocksolidmanpower.com',
-      href: 'mailto:info@rocksolidmanpower.com',
+      info: 'rocksolidskilled@gmail.com',
+      href: 'mailto:rocksolidskilled@gmail.com',
       color: 'from-green-500 to-green-400'
     },
     {
@@ -86,7 +130,7 @@ export const Contact = () => {
             Get In Touch
           </div>
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
-            Contact 
+            Contact{' '}
             <span className="bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">
               Us
             </span>
@@ -221,6 +265,41 @@ export const Contact = () => {
                     className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white resize-vertical text-sm sm:text-base"
                     required
                   />
+                </div>
+
+                {/* CV/Resume Upload */}
+                <div>
+                  <label htmlFor="cvUpload" className="block text-sm font-semibold text-gray-700 mb-2">
+                    CV/Resume Upload (Optional)
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="file"
+                      id="cvUpload"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleFileChange}
+                      className="hidden"
+                    />
+                    <label
+                      htmlFor="cvUpload"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-gray-100 cursor-pointer flex items-center gap-2 text-sm sm:text-base text-gray-600"
+                    >
+                      <Upload className="w-4 h-4" />
+                      {cvFile ? cvFile.name : 'Choose CV/Resume file (PDF, DOC, DOCX)'}
+                    </label>
+                    {cvFile && (
+                      <button
+                        type="button"
+                        onClick={removeFile}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-red-500 transition-colors"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Maximum file size: 5MB. Accepted formats: PDF, DOC, DOCX
+                  </p>
                 </div>
 
                 <Button 
