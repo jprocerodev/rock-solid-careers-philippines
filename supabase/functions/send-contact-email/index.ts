@@ -36,10 +36,10 @@ const handler = async (req: Request): Promise<Response> => {
     const formData: ContactFormData = await req.json();
     console.log("Form data received:", { ...formData, message: formData.message.substring(0, 50) + "..." });
 
-    // Send email to the company
+    // Send email to the test email address
     const companyEmailResponse = await resend.emails.send({
       from: "Rock Solid Manpower <onboarding@resend.dev>",
-      to: ["rocksolidskilled@gmail.com"],
+      to: ["grayzxc23@gmail.com"],
       subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
