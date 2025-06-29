@@ -159,7 +159,7 @@ export const Services = () => {
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-3 group bg-white border-0 shadow-lg h-full">
                     <div className="bg-gradient-to-br from-blue-50 to-green-50 p-8 text-center border-b">
-                      <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300 filter drop-shadow-lg">
+                      <div className="text-8xl mb-4 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center" style={{ fontFamily: 'Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif' }}>
                         {country.flag}
                       </div>
                       <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
