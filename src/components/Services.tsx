@@ -164,11 +164,8 @@ export const Services = () => {
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-3 group bg-white border-0 shadow-lg h-full">
                     <div className="bg-gradient-to-br from-blue-50 to-green-50 p-8 text-center border-b">
                       <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex flex-col items-center justify-center">
-                        <div className="w-20 h-20 mb-2 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-blue-100">
-                          <span className={`flag-icon flag-icon-${country.flag.toLowerCase()} text-4xl`} style={{ fontSize: '2.5rem', lineHeight: '1' }}></span>
-                        </div>
-                        <div className="text-lg font-bold text-gray-500 tracking-wider">
-                          {country.flagCode}
+                        <div className="w-24 h-16 mb-3 bg-white rounded-lg flex items-center justify-center shadow-lg border border-gray-200 overflow-hidden">
+                          <span className={`flag-icon flag-icon-${country.flag.toLowerCase()}`} style={{ fontSize: '3rem', lineHeight: '1' }}></span>
                         </div>
                       </div>
                       <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
