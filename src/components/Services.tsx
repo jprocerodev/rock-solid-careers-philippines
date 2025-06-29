@@ -14,7 +14,8 @@ import {
 const countries = [
   {
     name: 'Saudi Arabia',
-    flag: '🇸🇦',
+    flag: 'SA',
+    flagEmoji: '🇸🇦',
     flagCode: 'SA',
     positions: [
       'Domestic Workers',
@@ -26,7 +27,8 @@ const countries = [
   },
   {
     name: 'Emirates',
-    flag: '🇦🇪',
+    flag: 'AE',
+    flagEmoji: '🇦🇪',
     flagCode: 'AE',
     positions: [
       'Domestic Workers',
@@ -38,7 +40,8 @@ const countries = [
   },
   {
     name: 'Qatar',
-    flag: '🇶🇦',
+    flag: 'QA',
+    flagEmoji: '🇶🇦',
     flagCode: 'QA',
     positions: [
       'Domestic Workers',
@@ -47,7 +50,8 @@ const countries = [
   },
   {
     name: 'Oman',
-    flag: '🇴🇲',
+    flag: 'OM',
+    flagEmoji: '🇴🇲',
     flagCode: 'OM',
     positions: [
       'Domestic Workers'
@@ -55,7 +59,8 @@ const countries = [
   },
   {
     name: 'Kuwait',
-    flag: '🇰🇼',
+    flag: 'KW',
+    flagEmoji: '🇰🇼',
     flagCode: 'KW',
     positions: [
       'Domestic Workers'
@@ -165,8 +170,10 @@ export const Services = () => {
                   <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-3 group bg-white border-0 shadow-lg h-full">
                     <div className="bg-gradient-to-br from-blue-50 to-green-50 p-8 text-center border-b">
                       <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex flex-col items-center justify-center">
-                        <div className="text-6xl mb-2" style={{ fontFamily: 'Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif' }}>
-                          {country.flag}
+                        <div className="w-20 h-20 mb-2 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-blue-100">
+                          <span className="text-4xl" role="img" aria-label={`${country.name} flag`}>
+                            {country.flagEmoji}
+                          </span>
                         </div>
                         <div className="text-lg font-bold text-gray-500 tracking-wider">
                           {country.flagCode}
