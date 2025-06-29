@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
@@ -15,7 +14,6 @@ const countries = [
   {
     name: 'Saudi Arabia',
     flag: 'SA',
-    flagEmoji: '🇸🇦',
     flagCode: 'SA',
     positions: [
       'Domestic Workers',
@@ -28,7 +26,6 @@ const countries = [
   {
     name: 'Emirates',
     flag: 'AE',
-    flagEmoji: '🇦🇪',
     flagCode: 'AE',
     positions: [
       'Domestic Workers',
@@ -41,7 +38,6 @@ const countries = [
   {
     name: 'Qatar',
     flag: 'QA',
-    flagEmoji: '🇶🇦',
     flagCode: 'QA',
     positions: [
       'Domestic Workers',
@@ -51,7 +47,6 @@ const countries = [
   {
     name: 'Oman',
     flag: 'OM',
-    flagEmoji: '🇴🇲',
     flagCode: 'OM',
     positions: [
       'Domestic Workers'
@@ -60,7 +55,6 @@ const countries = [
   {
     name: 'Kuwait',
     flag: 'KW',
-    flagEmoji: '🇰🇼',
     flagCode: 'KW',
     positions: [
       'Domestic Workers'
@@ -171,9 +165,7 @@ export const Services = () => {
                     <div className="bg-gradient-to-br from-blue-50 to-green-50 p-8 text-center border-b">
                       <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex flex-col items-center justify-center">
                         <div className="w-20 h-20 mb-2 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-blue-100">
-                          <span className="text-4xl" role="img" aria-label={`${country.name} flag`}>
-                            {country.flagEmoji}
-                          </span>
+                          <span className={`flag-icon flag-icon-${country.flag.toLowerCase()} text-4xl`} style={{ fontSize: '2.5rem', lineHeight: '1' }}></span>
                         </div>
                         <div className="text-lg font-bold text-gray-500 tracking-wider">
                           {country.flagCode}

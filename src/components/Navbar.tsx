@@ -40,7 +40,7 @@ export const Navbar = () => {
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-green-500 to-green-400 rounded-full animate-pulse"></div>
             </div>
             <div className="flex flex-col items-start">
-              <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent leading-tight">
+              <span className="text-lg lg:text-xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent leading-tight">
                 Rock Solid Manpower
               </span>
               <span className="text-xs lg:text-sm font-medium text-gray-500 -mt-1">
