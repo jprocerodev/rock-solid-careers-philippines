@@ -41,10 +41,10 @@ export const Navbar = () => {
             </div>
             <div className="flex flex-col items-start">
               <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent leading-tight">
-                Rock Solid
+                Rock Solid Manpower
               </span>
-              <span className="text-sm lg:text-base font-semibold text-gray-600 -mt-1">
-                Manpower
+              <span className="text-xs lg:text-sm font-medium text-gray-500 -mt-1">
+                Network & Consultancy Inc.
               </span>
             </div>
           </button>
