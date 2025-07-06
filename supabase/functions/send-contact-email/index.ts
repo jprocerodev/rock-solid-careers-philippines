@@ -36,9 +36,9 @@ const handler = async (req: Request): Promise<Response> => {
     const formData: ContactFormData = await req.json();
     console.log("Form data received:", { ...formData, message: formData.message.substring(0, 50) + "..." });
 
-    // Send email to the test email address
+    // Send email to the test email address using your custom domain
     const companyEmailResponse = await resend.emails.send({
-      from: "Rock Solid Manpower <onboarding@resend.dev>",
+      from: "Rock Solid Manpower <noreply@rocksolidmanpower.online>",
       to: ["grayzxc23@gmail.com"],
       subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
       html: `
@@ -66,9 +66,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Company email sent:", companyEmailResponse);
 
-    // Send confirmation email to the user
+    // Send confirmation email to the user using your custom domain
     const userEmailResponse = await resend.emails.send({
-      from: "Rock Solid Manpower <onboarding@resend.dev>",
+      from: "Rock Solid Manpower <noreply@rocksolidmanpower.online>",
       to: [formData.email],
       subject: "Thank you for contacting Rock Solid Manpower!",
       html: `
