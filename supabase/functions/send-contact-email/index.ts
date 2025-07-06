@@ -58,25 +58,86 @@ const handler = async (req: Request): Promise<Response> => {
       to: ["grayzxc23@gmail.com"],
       subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2563eb;">New Contact Form Submission</h2>
-          
-          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #374151;">Contact Information</h3>
-            <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
-            <p><strong>Email:</strong> ${formData.email}</p>
-            ${formData.cvFile ? `<p><strong>CV Attached:</strong> ${formData.cvFile.name}</p>` : ''}
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>New Contact Form Submission</title>
+        </head>
+        <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; line-height: 1.6;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <!-- Header -->
+            <div style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); padding: 40px 30px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                🏢 Rock Solid Manpower
+              </h1>
+              <p style="color: #e0e7ff; margin: 10px 0 0 0; font-size: 16px;">New Contact Form Submission</p>
+            </div>
+            
+            <!-- Content -->
+            <div style="padding: 40px 30px;">
+              <!-- Alert Banner -->
+              <div style="background: linear-gradient(45deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+                <h2 style="color: #92400e; margin: 0 0 10px 0; font-size: 20px; display: flex; align-items: center;">
+                  🔔 New Application Received
+                </h2>
+                <p style="color: #b45309; margin: 0; font-size: 14px;">A potential candidate has submitted their information through your website.</p>
+              </div>
+              
+              <!-- Contact Information Card -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                <h3 style="color: #1e293b; margin: 0 0 20px 0; font-size: 18px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+                  👤 Contact Information
+                </h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b; font-weight: 600; width: 120px;">Full Name:</td>
+                    <td style="padding: 8px 0; color: #1e293b; font-weight: 500;">${formData.firstName} ${formData.lastName}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b; font-weight: 600;">Email:</td>
+                    <td style="padding: 8px 0;">
+                      <a href="mailto:${formData.email}" style="color: #2563eb; text-decoration: none; font-weight: 500;">${formData.email}</a>
+                    </td>
+                  </tr>
+                  ${formData.cvFile ? `
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748b; font-weight: 600;">CV Attached:</td>
+                    <td style="padding: 8px 0; color: #059669; font-weight: 500;">📎 ${formData.cvFile.name}</td>
+                  </tr>
+                  ` : ''}
+                </table>
+              </div>
+              
+              <!-- Message Card -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                <h3 style="color: #1e293b; margin: 0 0 15px 0; font-size: 18px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">
+                  💬 Message
+                </h3>
+                <div style="background: #ffffff; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                  <p style="color: #374151; margin: 0; white-space: pre-wrap; font-size: 15px; line-height: 1.6;">${formData.message}</p>
+                </div>
+              </div>
+              
+              <!-- Action Button -->
+              <div style="text-align: center; margin: 35px 0;">
+                <a href="mailto:${formData.email}" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3); transition: transform 0.2s;">
+                  📧 Reply to Candidate
+                </a>
+              </div>
+            </div>
+            
+            <!-- Footer -->
+            <div style="background: #f1f5f9; padding: 20px 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+              <p style="color: #64748b; margin: 0; font-size: 13px;">
+                This email was automatically generated from your Rock Solid Manpower contact form.<br>
+                <span style="color: #94a3b8;">Received on ${new Date().toLocaleString()}</span>
+              </p>
+            </div>
           </div>
-          
-          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #374151;">Message</h3>
-            <p style="white-space: pre-wrap;">${formData.message}</p>
-          </div>
-          
-          <p style="color: #6b7280; font-size: 14px; margin-top: 30px;">
-            This email was sent from the Rock Solid Manpower contact form.
-          </p>
-        </div>
+        </body>
+        </html>
       `,
       attachments: attachments
     });
@@ -89,44 +150,120 @@ const handler = async (req: Request): Promise<Response> => {
       to: [formData.email],
       subject: "Thank you for contacting Rock Solid Manpower!",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2563eb;">Thank You for Your Interest!</h2>
-          
-          <p>Dear ${formData.firstName},</p>
-          
-          <p>Thank you for reaching out to Rock Solid Manpower. We have received your message and will get back to you within 24 hours.</p>
-          
-          <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2563eb;">
-            <h3 style="margin-top: 0; color: #1e40af;">Your Message Summary</h3>
-            <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
-            <p><strong>Email:</strong> ${formData.email}</p>
-            ${formData.cvFile ? `<p><strong>CV Submitted:</strong> ${formData.cvFile.name}</p>` : ''}
-            <p><strong>Message Preview:</strong> ${formData.message.substring(0, 100)}${formData.message.length > 100 ? '...' : ''}</p>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Thank You - Rock Solid Manpower</title>
+        </head>
+        <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; line-height: 1.6;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <!-- Header -->
+            <div style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); padding: 40px 30px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                🏢 Rock Solid Manpower
+              </h1>
+              <p style="color: #e0e7ff; margin: 10px 0 0 0; font-size: 16px;">Your Pathway to International Opportunities</p>
+            </div>
+            
+            <!-- Content -->
+            <div style="padding: 40px 30px;">
+              <!-- Thank You Message -->
+              <div style="text-align: center; margin-bottom: 35px;">
+                <div style="background: linear-gradient(45deg, #dcfce7, #bbf7d0); padding: 25px; border-radius: 12px; margin-bottom: 25px;">
+                  <h2 style="color: #065f46; margin: 0 0 10px 0; font-size: 24px;">
+                    🎉 Thank You, ${formData.firstName}!
+                  </h2>
+                  <p style="color: #047857; margin: 0; font-size: 16px;">We have successfully received your message and will respond within 24 hours.</p>
+                </div>
+              </div>
+              
+              <!-- Submission Summary -->
+              <div style="background: #f0f9ff; border: 1px solid #bae6fd; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                <h3 style="color: #1e40af; margin: 0 0 20px 0; font-size: 18px; border-bottom: 2px solid #bae6fd; padding-bottom: 10px;">
+                  📋 Your Submission Summary
+                </h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #1e40af; font-weight: 600; width: 120px;">Name:</td>
+                    <td style="padding: 8px 0; color: #1e293b; font-weight: 500;">${formData.firstName} ${formData.lastName}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #1e40af; font-weight: 600;">Email:</td>
+                    <td style="padding: 8px 0; color: #1e293b; font-weight: 500;">${formData.email}</td>
+                  </tr>
+                  ${formData.cvFile ? `
+                  <tr>
+                    <td style="padding: 8px 0; color: #1e40af; font-weight: 600;">CV Submitted:</td>
+                    <td style="padding: 8px 0; color: #059669; font-weight: 500;">✅ ${formData.cvFile.name}</td>
+                  </tr>
+                  ` : ''}
+                  <tr>
+                    <td style="padding: 8px 0; color: #1e40af; font-weight: 600; vertical-align: top;">Message:</td>
+                    <td style="padding: 8px 0; color: #1e293b;">${formData.message.substring(0, 100)}${formData.message.length > 100 ? '...' : ''}</td>
+                  </tr>
+                </table>
+              </div>
+              
+              <!-- Services Info -->
+              <div style="background: linear-gradient(45deg, #fef7ff, #fae8ff); border: 1px solid #e9d5ff; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                <h3 style="color: #7c3aed; margin: 0 0 15px 0; font-size: 18px;">
+                  🌏 Our Specialized Services
+                </h3>
+                <p style="color: #5b21b6; margin: 0 0 15px 0; font-size: 15px;">We connect skilled Filipino workers with premium international job opportunities:</p>
+                <ul style="color: #5b21b6; margin: 0; padding-left: 20px;">
+                  <li style="margin: 5px 0;">Licensed recruitment agency (DMW-154-LB-08082023-R)</li>
+                  <li style="margin: 5px 0;">Comprehensive pre-deployment training</li>
+                  <li style="margin: 5px 0;">End-to-end support throughout your journey</li>
+                </ul>
+              </div>
+              
+              <!-- Contact Info -->
+              <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                <h3 style="color: #374151; margin: 0 0 20px 0; font-size: 18px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+                  📞 Contact Information
+                </h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-weight: 600; width: 80px;">Phone:</td>
+                    <td style="padding: 8px 0; color: #374151; font-weight: 500;">(02) 84-2061-59</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-weight: 600;">Email:</td>
+                    <td style="padding: 8px 0;">
+                      <a href="mailto:rocksolidskilled@gmail.com" style="color: #2563eb; text-decoration: none; font-weight: 500;">rocksolidskilled@gmail.com</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-weight: 600; vertical-align: top;">Address:</td>
+                    <td style="padding: 8px 0; color: #374151; font-weight: 500;">2nd Floor Lifestyle building, 1928 Leon Guinto Street, Brgy 692 Malate Manila</td>
+                  </tr>
+                </table>
+              </div>
+              
+              <!-- Closing Message -->
+              <div style="text-align: center; margin: 35px 0;">
+                <p style="color: #374151; font-size: 16px; margin: 0 0 20px 0;">
+                  We look forward to helping you achieve your international career goals! 🚀
+                </p>
+                <p style="color: #374151; font-weight: 600; margin: 0;">
+                  Best regards,<br>
+                  <span style="color: #2563eb;">The Rock Solid Manpower Team</span>
+                </p>
+              </div>
+            </div>
+            
+            <!-- Footer -->
+            <div style="background: #f1f5f9; padding: 20px 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+              <p style="color: #64748b; margin: 0; font-size: 12px;">
+                This is an automated confirmation email. Please do not reply to this message.<br>
+                <span style="color: #94a3b8;">© ${new Date().getFullYear()} Rock Solid Manpower. All rights reserved.</span>
+              </p>
+            </div>
           </div>
-          
-          <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #374151;">🌏 Our Services</h3>
-            <p>We specialize in connecting Filipino workers with international job opportunities. Our licensed team (DMW-154-LB-08082023-R) is ready to help you start your overseas career journey.</p>
-          </div>
-          
-          <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #374151;">📞 Contact Information</h3>
-            <p><strong>Phone:</strong> (02) 84-2061-59</p>
-            <p><strong>Email:</strong> rocksolidskilled@gmail.com</p>
-            <p><strong>Address:</strong> 2nd Floor Lifestyle building, 1928 Leon guinto street, Brgy 692 Malate Manila</p>
-          </div>
-          
-          <p>We look forward to helping you achieve your career goals abroad!</p>
-          
-          <p style="margin-top: 30px;">
-            Best regards,<br>
-            <strong>Rock Solid Manpower Team</strong>
-          </p>
-          
-          <p style="color: #6b7280; font-size: 12px; margin-top: 30px;">
-            This is an automated confirmation email. Please do not reply to this email.
-          </p>
-        </div>
+        </body>
+        </html>
       `,
     });
 
