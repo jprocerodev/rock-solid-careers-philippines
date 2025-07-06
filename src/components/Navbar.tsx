@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Building2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,10 +34,11 @@ export const Navbar = () => {
             className="group flex items-center gap-3 hover:scale-105 transition-all duration-300"
           >
             <div className="relative">
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                <Building2 className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-green-500 to-green-400 rounded-full animate-pulse"></div>
+              <img 
+                src="/lovable-uploads/35efa719-c489-439a-b26f-cb72d683814c.png" 
+                alt="Rock Solid Manpower Logo"
+                className="w-12 h-12 lg:w-14 lg:h-14 object-contain hover:scale-110 transition-transform duration-300"
+              />
             </div>
             <div className="flex flex-col items-start">
               <span className="text-lg lg:text-xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent leading-tight">
