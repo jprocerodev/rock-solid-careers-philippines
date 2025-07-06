@@ -52,10 +52,10 @@ const handler = async (req: Request): Promise<Response> => {
       disposition: 'attachment'
     }] : [];
 
-    // Send email to the test email address using your custom domain
+    // Send email to rocksolidskilled@gmail.com using your custom domain
     const companyEmailResponse = await resend.emails.send({
       from: "Rock Solid Manpower <noreply@rocksolidmanpower.online>",
-      to: ["grayzxc23@gmail.com"],
+      to: ["rocksolidskilled@gmail.com"],
       subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
       html: `
         <!DOCTYPE html>

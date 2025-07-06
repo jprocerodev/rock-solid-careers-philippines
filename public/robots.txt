@@ -17,4 +17,4 @@ User-agent: *
 Allow: /
 Crawl-delay: 2
 
-Sitemap: https://rocksolidmanpower.com/sitemap.xml
+Sitemap: http://rocksolidmanpower.online/sitemap.xml
