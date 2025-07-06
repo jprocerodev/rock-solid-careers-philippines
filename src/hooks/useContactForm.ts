@@ -19,17 +19,49 @@ export const useContactForm = (): UseContactFormReturn => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (reader.result && typeof reader.result === 'string') {
+          // Remove the data URL prefix (e.g., "data:application/pdf;base64,")
+          const base64 = reader.result.split(',')[1];
+          resolve(base64);
+        } else {
+          reject(new Error('Failed to convert file to base64'));
+        }
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
   const submitContactForm = async (formData: ContactFormData, cvFile?: File | null): Promise<boolean> => {
     setIsSubmitting(true);
     
     try {
-      // Prepare the data to send to the edge function
-      const emailData = {
-        ...formData,
-        cvFileName: cvFile ? cvFile.name : undefined
-      };
+      let emailData: any = { ...formData };
 
-      console.log('Submitting contact form:', emailData);
+      // If there's a CV file, convert it to base64
+      if (cvFile) {
+        console.log('Converting CV file to base64:', cvFile.name, cvFile.type, cvFile.size);
+        const base64Content = await convertFileToBase64(cvFile);
+        emailData.cvFile = {
+          name: cvFile.name,
+          content: base64Content,
+          type: cvFile.type
+        };
+        console.log('CV file converted successfully');
+      }
+
+      console.log('Submitting contact form:', {
+        ...emailData,
+        cvFile: emailData.cvFile ? { 
+          name: emailData.cvFile.name, 
+          type: emailData.cvFile.type, 
+          hasContent: !!emailData.cvFile.content 
+        } : undefined
+      });
 
       // Call the edge function
       const { data, error } = await supabase.functions.invoke('send-contact-email', {

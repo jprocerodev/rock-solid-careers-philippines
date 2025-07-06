@@ -14,7 +14,11 @@ interface ContactFormData {
   lastName: string;
   email: string;
   message: string;
-  cvFileName?: string;
+  cvFile?: {
+    name: string;
+    content: string; // base64 encoded file content
+    type: string;
+  };
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -34,7 +38,19 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const formData: ContactFormData = await req.json();
-    console.log("Form data received:", { ...formData, message: formData.message.substring(0, 50) + "..." });
+    console.log("Form data received:", { 
+      ...formData, 
+      message: formData.message.substring(0, 50) + "...",
+      cvFile: formData.cvFile ? { name: formData.cvFile.name, type: formData.cvFile.type, hasContent: !!formData.cvFile.content } : undefined
+    });
+
+    // Prepare attachments if CV file is provided
+    const attachments = formData.cvFile ? [{
+      filename: formData.cvFile.name,
+      content: formData.cvFile.content, // base64 encoded content
+      type: formData.cvFile.type,
+      disposition: 'attachment'
+    }] : [];
 
     // Send email to the test email address using your custom domain
     const companyEmailResponse = await resend.emails.send({
@@ -49,7 +65,7 @@ const handler = async (req: Request): Promise<Response> => {
             <h3 style="margin-top: 0; color: #374151;">Contact Information</h3>
             <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
             <p><strong>Email:</strong> ${formData.email}</p>
-            ${formData.cvFileName ? `<p><strong>CV Attached:</strong> ${formData.cvFileName}</p>` : ''}
+            ${formData.cvFile ? `<p><strong>CV Attached:</strong> ${formData.cvFile.name}</p>` : ''}
           </div>
           
           <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -62,6 +78,7 @@ const handler = async (req: Request): Promise<Response> => {
           </p>
         </div>
       `,
+      attachments: attachments
     });
 
     console.log("Company email sent:", companyEmailResponse);
@@ -83,7 +100,7 @@ const handler = async (req: Request): Promise<Response> => {
             <h3 style="margin-top: 0; color: #1e40af;">Your Message Summary</h3>
             <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
             <p><strong>Email:</strong> ${formData.email}</p>
-            ${formData.cvFileName ? `<p><strong>CV Submitted:</strong> ${formData.cvFileName}</p>` : ''}
+            ${formData.cvFile ? `<p><strong>CV Submitted:</strong> ${formData.cvFile.name}</p>` : ''}
             <p><strong>Message Preview:</strong> ${formData.message.substring(0, 100)}${formData.message.length > 100 ? '...' : ''}</p>
           </div>
           
