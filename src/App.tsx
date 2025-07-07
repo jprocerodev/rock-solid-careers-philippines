@@ -19,6 +19,7 @@ const queryClient = new QueryClient({
 
 const App = () => {
   console.log('App component rendering...');
+  console.log('Current pathname:', window.location.pathname);
   
   return (
     <ErrorBoundary>
